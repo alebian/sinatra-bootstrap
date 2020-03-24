@@ -18,6 +18,10 @@ map '/' do
   run Web::App
 end
 
+Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+  username == ENV['SIDEKIQ_AUTH_USER'] && password == ENV['SIDEKIQ_AUTH_PASS']
+end
+
 map '/sidekiq' do
   run Sidekiq::Web
 end

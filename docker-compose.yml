@@ -6,12 +6,27 @@ services:
     networks:
       - default
 
+  db:
+    image: postgres:11.5-alpine
+    environment:
+      - POSTGRES_PASSWORD=sinatra-bootstrap
+      - POSTGRES_USER=sinatra-bootstrap
+      - POSTGRES_DB=sinatra-bootstrap
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - default
+    volumes:
+      - sinatra-bootstrap-db-data:/var/lib/postgresql/data
+
   webapp:
     build: .
-    command: /app/bin/webapp
+    command: /bin/sh -c "bundle exec rake db:migrate db:seed && /app/bin/webapp"
     environment:
       - RACK_ENV=production
+      - DATABASE_URL=postgresql://sinatra-bootstrap:sinatra-bootstrap@db/sinatra-bootstrap
       - REDIS_URL=redis://redis:6379
+      - SIDEKIQ_AUTH_USER=test
+      - SIDEKIQ_AUTH_PASS=test
     ports:
       - 4567:4567
     networks:
@@ -22,6 +37,7 @@ services:
     command: /app/bin/workers
     environment:
       - RACK_ENV=production
+      - DATABASE_URL=postgresql://sinatra-bootstrap:sinatra-bootstrap@db/sinatra-bootstrap
       - REDIS_URL=redis://redis:6379
     networks:
       - default
@@ -29,4 +45,4 @@ services:
 networks:
   default:
 volumes:
-  card-parsers-db-data:
+  sinatra-bootstrap-db-data:

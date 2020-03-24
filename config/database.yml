@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  pool: 5
+  username: <%= ENV.fetch('DB_USERNAME', 'sinatra-bootstrap') %>
+  password: <%= ENV.fetch('DB_PASSWORD', 'sinatra-bootstrap') %>
+  host: <%= ENV.fetch('DB_1_PORT_5432_TCP_ADDR', 'localhost') %>
+  port: <%= ENV.fetch('DB_1_PORT_5432_TCP_PORT', '5432') %>
+
+development:
+  <<: *default
+  database: sinatra-bootstrap_development
+
+test:
+  <<: *default
+  database: sinatra-bootstrap_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>?pool=<%= ENV['DATABASE_CONNECTION_POOL'] || 10 %>

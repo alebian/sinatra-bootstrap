@@ -1,6 +1,6 @@
 FROM ruby:2.7.0-alpine3.11
 
-RUN apk update && apk add build-base
+RUN apk update && apk add build-base ruby-dev libpq postgresql-dev
 
 RUN gem install bundler
 

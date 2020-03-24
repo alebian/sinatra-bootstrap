@@ -5,13 +5,17 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'activesupport', '~> 6.0'
+gem 'http', '~> 4.3'
 gem 'oj', '~> 3.10'
 gem 'pagy', '~> 3.7'
+gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
-gem 'rack-cors', '1.1'
+gem 'rake', '~> 13.0'
+gem 'rack-cors', '~> 1.1'
 gem 'require_all', '~> 3.0'
 gem 'sidekiq', '~> 6.0'
 gem 'sinatra', '~> 2.0'
+gem 'sinatra-activerecord', '~> 2.0'
 gem 'sinatra-contrib', '~> 2.0'
 
 group :development do
