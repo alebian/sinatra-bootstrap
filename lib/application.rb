@@ -34,7 +34,7 @@ class Application
   end
 
   def load_secrets_from_filepath!
-    loaded_secrets = YAML.load(preprocess(@@secrets_filepath)) || {}
+    loaded_secrets = YAML.load(preprocess(@@secrets_filepath)) || {} # rubocop:disable Security/YAMLLoad
     @secrets = loaded_secrets.fetch(ENV['RACK_ENV'] || 'development', {})
   end
 
@@ -42,7 +42,7 @@ class Application
     ERB.new(IO.read(path)).result
   end
 
-  def define_secrets_methods! # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def define_secrets_methods!
     @secrets.each do |key, _|
       if @secrets[key].nil?
         raise UndefinedConstant, "Constant #{key} is missing" unless ENV['PARSER_EDITOR_MODE']

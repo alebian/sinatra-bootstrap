@@ -15,6 +15,9 @@ clean:
 
 bundle: .make.bundle
 
+audit: bundle
+	@bundle exec bundle-audit
+
 serve: bundle
 	@bundle exec puma -C ./config/puma.rb
 
@@ -29,6 +32,9 @@ sidekiq: bundle
 test: bundle
 	bundle exec rspec
 
-.PHONY: rubocop
+.PHONY: lint
 lint: bundle
 	bundle exec rubocop Gemfile bin lib spec web config
+
+.PHONY: pre-push
+pre-push: lint audit test

@@ -6,13 +6,13 @@ AllCops:
   Exclude:
     - spec/spec_helper.rb
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
-LineLength:
+Layout/LineLength:
   Max: 99
 
-FrozenStringLiteralComment:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/BlockLength:
@@ -38,3 +38,7 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/ClassVars:
+  Exclude:
+    - lib/application.rb
