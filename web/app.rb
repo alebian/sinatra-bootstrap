@@ -1,15 +1,22 @@
-require 'sinatra'
-require 'sinatra/reloader'
-
 require_relative '../lib/boot'
-require_rel 'helpers'
+require_relative 'base'
+
+require_rel 'controllers'
+require_rel 'middlewares'
 
 module Web
-  class App < Sinatra::Base
-    include Helpers::JSON
+  class App < Base
+    helpers Sinatra::CustomLogger
 
-    configure :development do
-      register Sinatra::Reloader
+    use Middlewares::FilteredLogging
+
+    use Controllers::Health
+
+    configure do
+      disable :logging
+
+      logger = Application.logger
+      set :logger, logger
     end
   end
 end
