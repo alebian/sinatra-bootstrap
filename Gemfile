@@ -17,3 +17,9 @@ group :development do
   gem 'rubocop-performance', '~> 1.5'
   gem 'rubocop-rspec', '~> 1.38'
 end
+
+group :development, :test do
+  gem 'bundler-audit', '~> 0.6'
+  gem 'byebug', '~> 11.1'
+  gem 'dotenv', '~> 2.7'
+end
