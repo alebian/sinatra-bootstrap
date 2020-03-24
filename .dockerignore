@@ -406,3 +406,7 @@ $RECYCLE.BIN/
 
 *.pem
 .make*
+.rspec
+.rubocop.yml
+spec
+.circleci
