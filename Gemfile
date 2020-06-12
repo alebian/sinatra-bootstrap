@@ -21,7 +21,7 @@ gem 'sinatra-contrib', '~> 2.0'
 group :development do
   gem 'rubocop', '~> 0.82'
   gem 'rubocop-performance', '~> 1.5'
-  gem 'rubocop-rspec', '~> 1.38'
+  gem 'rubocop-rspec', '~> 1.40'
 end
 
 group :test do
