@@ -38,7 +38,7 @@ group :development, :test do
   gem 'bundler-audit', '~> 0.6'
   gem 'byebug', '~> 11.1'
   gem 'dotenv', '~> 2.7'
-  gem 'factory_bot', '~> 5.1'
+  gem 'factory_bot', '~> 6.0'
   gem 'faker', '~> 2.10'
   gem 'strong_migrations', '~> 0.6'
 end
