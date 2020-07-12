@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'activesupport', '~> 6.0'
-gem 'http', '~> 4.3'
+gem 'http', '~> 4.4'
 gem 'oj', '~> 3.10'
 gem 'pagy', '~> 3.7'
 gem 'pg', '~> 1.2'
