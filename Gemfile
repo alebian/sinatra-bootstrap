@@ -30,7 +30,7 @@ group :test do
   gem 'rspec', '~> 3.9'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'simplecov', '~> 0.18', require: false
-  gem 'vcr', '~> 5.1'
+  gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.8'
 end
 
