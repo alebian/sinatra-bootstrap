@@ -40,5 +40,5 @@ group :development, :test do
   gem 'dotenv', '~> 2.7'
   gem 'factory_bot', '~> 5.1'
   gem 'faker', '~> 2.10'
-  gem 'strong_migrations', '~> 0.6'
+  gem 'strong_migrations', '~> 0.7'
 end
