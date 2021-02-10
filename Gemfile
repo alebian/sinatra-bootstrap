@@ -39,6 +39,6 @@ group :development, :test do
   gem 'byebug', '~> 11.1'
   gem 'dotenv', '~> 2.7'
   gem 'factory_bot', '~> 5.1'
-  gem 'faker', '~> 2.10'
+  gem 'faker', '~> 2.16'
   gem 'strong_migrations', '~> 0.6'
 end
