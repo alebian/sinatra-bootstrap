@@ -7,7 +7,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gem 'activesupport', '~> 6.0'
 gem 'http', '~> 4.3'
 gem 'oj', '~> 3.10'
-gem 'pagy', '~> 3.7'
+gem 'pagy', '~> 3.12'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1'
