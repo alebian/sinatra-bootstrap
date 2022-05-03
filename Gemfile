@@ -14,9 +14,9 @@ gem 'rack-cors', '~> 1.1'
 gem 'rake', '~> 13.0'
 gem 'require_all', '~> 3.0'
 gem 'sidekiq', '~> 6.0'
-gem 'sinatra', '~> 2.0'
+gem 'sinatra', '~> 2.2'
 gem 'sinatra-activerecord', '~> 2.0'
-gem 'sinatra-contrib', '~> 2.0'
+gem 'sinatra-contrib', '~> 2.2'
 
 group :development do
   gem 'rubocop', '~> 0.82'
