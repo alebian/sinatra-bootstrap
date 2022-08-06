@@ -3,6 +3,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: enable
   Exclude:
     - spec/spec_helper.rb
 

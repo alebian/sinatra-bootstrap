@@ -1,8 +1,8 @@
-FROM ruby:2.7.0-alpine3.11
+FROM ruby:3.1.2-alpine
 
 RUN apk update && apk add build-base ruby-dev libpq postgresql-dev
 
-RUN gem install bundler
+RUN gem install bundler -v 2.3.18
 
 WORKDIR /app
 
@@ -14,6 +14,6 @@ COPY . .
 
 EXPOSE 4567
 
-ENV ENV production
+ENV RACK_ENV production
 
 CMD ["/app/bin/webapp"]

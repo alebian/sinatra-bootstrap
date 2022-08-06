@@ -133,8 +133,12 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-def response_body(response)
-  ActiveSupport::JSON.decode(response.body) if response.present? && response.body.present?
+def response_body(response = nil)
+  if response.present? && response.body.present?
+    ActiveSupport::JSON.decode(response.body)
+  else
+    ActiveSupport::JSON.decode(last_response.body)
+  end
 end
 
 def file_fixture(path)

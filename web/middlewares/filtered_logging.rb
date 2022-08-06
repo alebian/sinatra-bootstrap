@@ -20,7 +20,7 @@ module Web
           type: 'Request',
           path: env['REQUEST_PATH'],
           method: env['REQUEST_METHOD'],
-          status: status,
+          status:,
           duration: 1000 * (Time.current - start_time)
         )
       end

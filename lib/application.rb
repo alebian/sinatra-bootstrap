@@ -34,19 +34,17 @@ class Application
   end
 
   def load_secrets_from_filepath!
-    loaded_secrets = YAML.load(preprocess(@@secrets_filepath)) || {} # rubocop:disable Security/YAMLLoad
+    loaded_secrets = YAML.load(preprocess(@@secrets_filepath), aliases: true) || {}
     @secrets = loaded_secrets.fetch(ENV['RACK_ENV'] || 'development', {})
   end
 
   def preprocess(path)
-    ERB.new(IO.read(path)).result
+    ERB.new(File.read(path)).result
   end
 
   def define_secrets_methods!
-    @secrets.each do |key, _|
-      if @secrets[key].nil?
-        raise UndefinedConstant, "Constant #{key} is missing" unless ENV['PARSER_EDITOR_MODE']
-      end
+    @secrets.each do |key, value|
+      raise UndefinedConstant, "Constant #{key} is missing" if value.nil?
 
       # This defines the methods for Application.secrets instance
       @secrets.define_singleton_method(key) do
@@ -57,11 +55,11 @@ class Application
 
   def logger_file
     if ENV['LOG_TO_FILE'] == 'true'
-      file = File.new("logs/#{ENV['RACK_ENV']}.log", 'a+')
+      file = File.new("logs/#{ENV.fetch('RACK_ENV', nil)}.log", 'a+')
       file.sync = true
       file
     else
-      STDOUT
+      $stdout
     end
   end
 end

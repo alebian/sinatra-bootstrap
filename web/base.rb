@@ -27,7 +27,7 @@ module Web
 
     def serialize_paginated(pagy, data)
       {
-        data: data,
+        data:,
         current_page: pagy.page,
         per_page: pagy.items,
         total_pages: pagy.pages,

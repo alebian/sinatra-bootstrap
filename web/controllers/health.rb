@@ -5,7 +5,7 @@ module Web
         Redis.new.get('ping') if defined?(Redis)
         ActiveRecord::Base.connection.execute('SELECT 1;') if defined?(ActiveRecord::Base)
 
-        json 200, {}
+        json 200
       end
     end
   end
