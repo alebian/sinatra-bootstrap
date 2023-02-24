@@ -15,26 +15,30 @@ clean:
 
 bundle: .make.bundle
 
-audit: bundle
-	@bundle exec bundle-audit
-
-serve: bundle
-	@bundle exec puma -C ./config/puma.rb
-
-sidekiq: bundle
-	@bundle exec sidekiq -r ./lib/boot.rb -C ./config/sidekiq.yml
-
 .make.bundle: Gemfile
 	bundle install
 	touch .make.bundle
 
-.PHONY: spec
+serve: bundle
+	@bundle exec puma -C ./config/puma.rb
+
+workers: bundle
+	@bundle exec sidekiq -r ./lib/boot.rb -C ./config/sidekiq.yml
+
+.PHONY: test
 test: bundle
 	bundle exec rspec
 
 .PHONY: lint
 lint: bundle
-	bundle exec rubocop Gemfile bin lib spec web config
+	bundle exec rubocop --parallel Gemfile bin lib spec web config
+
+.PHONY: audit
+audit: bundle
+	@bundle exec bundle audit check --update
+
+.PHONY: static
+static: lint audit
 
 .PHONY: pre-push
 pre-push: lint audit test
